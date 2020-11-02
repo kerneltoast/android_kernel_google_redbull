@@ -735,7 +735,7 @@ static int sm7250_get_chg_chgr_state(const struct bms_dev *bms,
 	}
 	chg_state->f.icl = (icl * 50);
 
-	pr_info("MSC_PCS chg_state=%lx [0x%x:%d:%d:%d:%d] chg=%c\n",
+	pr_debug("MSC_PCS chg_state=%lx [0x%x:%d:%d:%d:%d] chg=%c\n",
 		(unsigned long)chg_state->v,
 		chg_state->f.flags,
 		chg_state->f.chg_type,
@@ -829,7 +829,7 @@ static int sm7250_get_batt_iterm(struct bms_dev *bms)
 			rc);
 		return rc;
 	}
-	pr_info("CHGR_ENG_CHARGING_CFG_REG = 0x%02x\n", stat);
+	pr_debug("CHGR_ENG_CHARGING_CFG_REG = 0x%02x\n", stat);
 
 	if (stat & CHGR_ITERM_USE_ANALOG_BIT) {
 		return -EINVAL;
@@ -1021,7 +1021,7 @@ static int sm7250_charge_disable(struct bms_dev *bms, bool disable)
 				 CHGR_CHARGING_ENABLE_CMD,
 				 CHARGING_ENABLE_CMD_BIT, val);
 
-	pr_info("CHARGE_DISABLE : disable=%d -> val=%d (%d)\n",
+	pr_debug("CHARGE_DISABLE : disable=%d -> val=%d (%d)\n",
 		disable, val, rc);
 
 	return rc;
@@ -1036,7 +1036,7 @@ static int sm7250_charge_pause(struct bms_dev *bms, bool pause)
 				 CHGR_CHARGING_PAUSE_CMD,
 				 CHARGING_PAUSE_CMD_BIT, val);
 
-	pr_info("CHARGE_PAUSE : pause=%d -> val=%d (%d)\n",
+	pr_debug("CHARGE_PAUSE : pause=%d -> val=%d (%d)\n",
 		pause, val, rc);
 
 	return rc;
@@ -1092,7 +1092,7 @@ static int sm7250_psy_set_property(struct power_supply *psy,
 			}
 		}
 
-		pr_info("CONSTANT_CHARGE_CURRENT_MAX : ivalue=%d, val=%d pause=%d (%d)\n",
+		pr_debug("CONSTANT_CHARGE_CURRENT_MAX : ivalue=%d, val=%d pause=%d (%d)\n",
 			ivalue, val, ivalue == 0, rc);
 		break;
 	case POWER_SUPPLY_PROP_VOLTAGE_MAX:
@@ -1111,7 +1111,7 @@ static int sm7250_psy_set_property(struct power_supply *psy,
 		rc = sm7250_write(bms->pmic_regmap,
 					CHGR_FLOAT_VOLTAGE_SETTING,
 					&val, 1);
-		pr_info("CONSTANT_CHARGE_VOLTAGE_MAX : ivalue=%d, val=%d (%d)\n",
+		pr_debug("CONSTANT_CHARGE_VOLTAGE_MAX : ivalue=%d, val=%d (%d)\n",
 							ivalue, val, rc);
 		break;
 	case POWER_SUPPLY_PROP_CHARGE_DISABLE:
