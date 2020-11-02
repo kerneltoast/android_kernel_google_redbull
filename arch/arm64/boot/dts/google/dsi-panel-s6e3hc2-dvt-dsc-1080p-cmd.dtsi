@@ -167,7 +167,7 @@
 				qcom,compression-mode = "dsc";
 				qcom,mdss-dsc-slice-height = <65>;
 				qcom,mdss-dsc-slice-width = <540>;
-				qcom,mdss-dsc-slice-per-pkt = <1>;
+				qcom,mdss-dsc-slice-per-pkt = <2>;
 				qcom,mdss-dsc-bit-per-component = <8>;
 				qcom,mdss-dsc-bit-per-pixel = <8>;
 				qcom,mdss-dsc-block-prediction-enable;
@@ -275,7 +275,7 @@
 				qcom,compression-mode = "dsc";
 				qcom,mdss-dsc-slice-height = <65>;
 				qcom,mdss-dsc-slice-width = <540>;
-				qcom,mdss-dsc-slice-per-pkt = <1>;
+				qcom,mdss-dsc-slice-per-pkt = <2>;
 				qcom,mdss-dsc-bit-per-component = <8>;
 				qcom,mdss-dsc-bit-per-pixel = <8>;
 				qcom,mdss-dsc-block-prediction-enable;
